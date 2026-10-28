@@ -435,6 +435,29 @@ button:focus-visible {
       gap: 18px;
     }
 
+    .software-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .software-card {
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(145deg, rgba(155, 29, 50, 0.18), rgba(20, 20, 20, 0.96) 68%);
+    }
+
+    .software-card h3 {
+      margin: 0 0 6px;
+    }
+
+    .software-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .about-spotlight {
       display: grid;
       grid-template-columns: 260px 1fr;
@@ -709,6 +732,10 @@ button:focus-visible {
         grid-template-columns: 1fr;
       }
 
+      .software-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       h1 {
         letter-spacing: -1.5px;
       }
@@ -742,6 +769,7 @@ button:focus-visible {
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#software">Software</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -834,6 +862,34 @@ button:focus-visible {
         <p class="section-intro" style="margin-top:16px">
           These bars are visual design elements, not verified skill ratings.
         </p>
+      </div>
+    </section>
+
+    <section id="software">
+      <div class="container reveal">
+        <div class="eyebrow">My Creative Toolkit</div>
+        <h2 class="section-title">Software I <span class="green">Use</span></h2>
+        <p class="section-intro">
+          The tools I use to edit video, create designs, and refine images.
+        </p>
+        <div class="software-grid">
+          <article class="panel software-card">
+            <h3>DaVinci Resolve</h3>
+            <p>Video editing & color grading</p>
+          </article>
+          <article class="panel software-card">
+            <h3>Picsart</h3>
+            <p>Mobile photo editing & design</p>
+          </article>
+          <article class="panel software-card">
+            <h3>Adobe Photoshop</h3>
+            <p>Image editing & graphic design</p>
+          </article>
+          <article class="panel software-card">
+            <h3>Adobe Lightroom</h3>
+            <p>Photo editing & color correction</p>
+          </article>
+        </div>
       </div>
     </section>
 
