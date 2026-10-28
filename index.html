@@ -344,7 +344,7 @@ button:focus-visible {
       height: 220px;
       left: 7%;
       bottom: 10%;
-      background: rgba(75, 113, 86, 0.12);
+      background: rgba(155, 29, 50, 0.16);
       animation-delay: 1.5s;
     }
 
@@ -946,11 +946,13 @@ button:focus-visible {
             WhatsApp ↗
           </a>
           <a class="btn"
-             href="mailto:chaitanyapacha7076@gmail.com">
-            Email ↗
+             href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=chaitanyapacha7076%40gmail.com"
+             target="_blank" rel="noopener noreferrer">
+            Email via Gmail ↗
           </a>
         </div>
-        <p style="margin-top:18px;color:var(--muted);font-size:.85rem">
+        <p style="margin-top:18px;color:var(--muted);font-size:.95rem">
+          Email address: <span style="color:var(--text);user-select:all">chaitanyapacha7076@gmail.com</span>
         </p>
       </div>
     </section>
@@ -1029,19 +1031,25 @@ button:focus-visible {
     }
 
     const skillSection = document.querySelector("#skills");
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.querySelectorAll(".skill-fill").forEach((bar) => {
-            bar.style.width = bar.dataset.width;
-          });
-          skillObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.2 });
+    const skillBars = document.querySelectorAll(".skill-fill");
 
-    if (skillSection) {
+    if ("IntersectionObserver" in window && skillSection) {
+      const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            skillBars.forEach((bar) => {
+              bar.style.width = bar.dataset.width;
+            });
+            skillObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+
       skillObserver.observe(skillSection);
+    } else {
+      skillBars.forEach((bar) => {
+        bar.style.width = bar.dataset.width;
+      });
     }
   </script>
 </body>
