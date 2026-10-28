@@ -8,7 +8,7 @@
   <title>chaipresence | Video Editor</title>
 
   <style>
-    /* ===== AN.RAWS_EDITz Cinematic Upgrade ===== */
+    /* ===== chaipresence cinematic theme ===== */
 
 :root {
   --accent: #7A1F2D;
@@ -373,7 +373,7 @@ button:focus-visible {
 
     h1 span {
       color: var(--green);
-      text-shadow: 0 0 30px #5a213255;
+      text-shadow: 0 0 30px rgba(155, 29, 50, 0.34);
       animation: glowPulse 3s ease-in-out infinite alternate;
     }
 
@@ -408,7 +408,7 @@ button:focus-visible {
 
     .btn:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 22px #5a213266;
+      box-shadow: 0 0 22px rgba(155, 29, 50, 0.4);
       animation: buttonPulse 0.6s ease;
     }
 
@@ -898,7 +898,7 @@ button:focus-visible {
         <div class="eyebrow">Selected Work</div>
         <h2 class="section-title">My <span class="green">Projects</span></h2>
         <p class="section-intro">
-          Add your edits, Reels, and thumbnails here. Update the project list below whenever you want to showcase new work.
+          These starter examples are placeholders. Replace them with your own edits, Reels, thumbnails, and project descriptions.
         </p>
 
         <div class="cards" id="projects-grid"></div>
@@ -950,10 +950,12 @@ button:focus-visible {
              target="_blank" rel="noopener noreferrer">
             Email via Gmail ↗
           </a>
+          <button class="btn" id="copy-email" type="button">Copy email address</button>
         </div>
         <p style="margin-top:18px;color:var(--muted);font-size:.95rem">
-          Email address: <span style="color:var(--text);user-select:all">chaitanyapacha7076@gmail.com</span>
+          Email address: <span id="email-address" style="color:var(--text);user-select:all">chaitanyapacha7076@gmail.com</span>
         </p>
+        <p id="email-status" role="status" aria-live="polite" style="min-height:1.6em;color:var(--green-soft);font-size:.9rem"></p>
       </div>
     </section>
   </main>
@@ -1004,6 +1006,25 @@ button:focus-visible {
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+    const copyEmailButton = document.getElementById("copy-email");
+    const emailAddress = document.getElementById("email-address");
+    const emailStatus = document.getElementById("email-status");
+
+    copyEmailButton.addEventListener("click", async () => {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) {
+        emailStatus.textContent = "Copy isn't available here. Select the address above and copy it.";
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(emailAddress.textContent.trim());
+        emailStatus.textContent = "Email address copied.";
+      } catch (error) {
+        console.error("Couldn't copy the email address.", error);
+        emailStatus.textContent = "Couldn't copy it. Select the address above and copy it manually.";
+      }
+    });
 
     const revealItems = document.querySelectorAll(".reveal");
 
